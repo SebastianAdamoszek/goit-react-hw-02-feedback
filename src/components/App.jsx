@@ -4,6 +4,8 @@ import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statistics/Statistics';
 // import Feedback from './Feedback/Feedback';
 
+import Notification from './Notification';
+
 const App = () => {
   const [feedbackState, setFeedbackState] = useState({
     good: 0,
@@ -11,10 +13,17 @@ const App = () => {
     bad: 0,
   });
 
-  const handleFeedback = type => {
-    setFeedbackState(prevState => ({
+  const handleFeedback = (type) => {
+    setFeedbackState((prevState) => ({
       ...prevState,
       [type]: prevState[type] + 1,
+    }));
+  };
+
+  const handleRemoveFeedback = (type) => {
+    setFeedbackState((prevState) => ({
+      ...prevState,
+      [type]: prevState[type] > 0 ? prevState[type] - 1 : 0,
     }));
   };
 
@@ -24,24 +33,16 @@ const App = () => {
 
   const calculatePositivePercentage = () => {
     const totalFeedback = calculateTotalFeedback();
-    return totalFeedback > 0
-      ? ((feedbackState.good / totalFeedback) * 100).toFixed(2)
-      : 0;
+    return totalFeedback > 0 ? ((feedbackState.good / totalFeedback) * 100).toFixed(2) : 0;
   };
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Section title="Feedback">
         <FeedbackOptions
           options={['good', 'neutral', 'bad']}
           onLeaveFeedback={handleFeedback}
+          onRemoveFeedback={handleRemoveFeedback}
         />
       </Section>
 
@@ -54,6 +55,12 @@ const App = () => {
           positivePercentage={calculatePositivePercentage()}
         />
       </Section>
+
+      {calculateTotalFeedback() === 0 && (
+        <Section title="Notification">
+          <Notification message="There is no feedback" />
+        </Section>
+      )}
     </div>
   );
 };

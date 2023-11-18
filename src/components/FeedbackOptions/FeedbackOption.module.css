@@ -1,0 +1,17 @@
+.buttons__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.good:hover {
+  background-color: #4caf50;
+}
+
+.neutral:hover {
+  background-color: #ccc;
+}
+
+.bad:hover {
+  background-color: #d9534f;
+}

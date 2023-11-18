@@ -1,0 +1,13 @@
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 320px;
+  background-color: rgba(102, 51, 0, 0.8);
+}
+.title {
+  text-align: center;
+  color: rgb(45, 3, 3);
+  font-size: xx-large;
+}

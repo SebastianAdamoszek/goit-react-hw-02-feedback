@@ -3,7 +3,7 @@ import Section from './SectionTitle/SectionTitle';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statistics/Statistics';
 // import Feedback from './Feedback/Feedback';
-import Notification from './Notification';
+import Notification from './Notification/Notification';
 
 const App = () => {
   const [feedbackState, setFeedbackState] = useState({
@@ -31,7 +31,7 @@ const App = () => {
   };
 
   return (
-    <div style={{ margin: '100px' }}>
+    <div style={{ margin: '50px 0px 0px 50px' }}>
       <Section title="Feedback">
         <FeedbackOptions
           options={['good', 'neutral', 'bad']}

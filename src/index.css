@@ -42,5 +42,9 @@ button {
   transition: 200ms ease-in-out;
 }
 button:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
+}
+button:active {
+  transform: scale(1.1);
+  border: 1px solid rgb(102, 51, 0);
 }
